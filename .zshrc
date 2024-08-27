@@ -17,7 +17,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 export EDITOR='nvim'
 export VISUAL='nvim'
-
+export TERM="xterm-kitty"
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -36,7 +36,7 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 # Custom Functions
 fzf_open() {
   local file
-  file=$(fzf +m -q "$1")
+  file=$(find . -type f -not -path '*/\.*' | fzf +m -q "$1")
   if [[ -n "$file" ]]; then
     nohup xdg-open "$file" >/dev/null 2>&1 &
     disown
@@ -46,6 +46,8 @@ fzf_open() {
 # Aliases
 alias fo='fzf_open'
 alias zshrc='nvim ~/.zshrc'
+alias vimrc='cd .config/nvim && nvim .'
+alias tmuxrc='cd .config/tmux && nvim .'
 alias update='sudo pacman -Syu'  # Assuming you're using Arch-based distro
 alias ls='exa --icons'
 alias ll='exa -alh --git --icons'
@@ -65,11 +67,25 @@ alias tn='tmux new -s'
 alias ta='tmux attach -t'
 alias tl='tmux list-sessions'
 alias op='tmuxifier load-session test'
-
-#db
-
+alias ds='tmuxifier load-session dsa'
+alias dsa="cd ~/Documents/Week-13-Web-Development/git/basic_dsa_sheet/javascript && vim ."
+# alias ds='code ~/JS_DSA_Learning/prime '
+# DB aliases
 alias db='sudo systemctl start mongodb'
 alias dbs='sudo systemctl stop mongodb'
-# Add more custom configurations below this line
+alias wo='cd Projects'
+# Dotfiles alias
 alias dotfiles='/usr/bin/git --git-dir=/home/dude/.dotfiles/ --work-tree=/home/dude'
-alias dotfiles='/usr/bin/git --git-dir=/home/dude/.dotfiles/ --work-tree=/home/dude'
+
+# Start SSH agent (moved to the end)
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval "$(ssh-agent -s)" &>/dev/null
+  ssh-add ~/.ssh/id_ed25519 &>/dev/null
+fi
+
+# bun completions
+[ -s "/home/dude/.bun/_bun" ] && source "/home/dude/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
