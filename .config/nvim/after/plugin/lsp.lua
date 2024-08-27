@@ -30,7 +30,7 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
     -- Replace the language servers listed here 
     -- with the ones you want to install
-    ensure_installed = {'quick_lint_js','cssls'},
+    ensure_installed = {'quick_lint_js','cssls','tsserver'},
     handlers = {
         lsp_zero.default_setup,
     },

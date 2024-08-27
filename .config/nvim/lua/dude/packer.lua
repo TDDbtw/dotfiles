@@ -21,7 +21,11 @@ return require('packer').startup(function(use)
   use('vim-test/vim-test')
   use('junegunn/fzf')
   use('tpope/vim-commentary')
-
+  use 'mfussenegger/nvim-dap'
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use 'mfussenegger/nvim-dap-python'  -- for Python debugging
+  use 'nvim-neotest/nvim-nio'  -- Add this line
+  use 'eliba2/vim-node-inspect'
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
@@ -34,7 +38,7 @@ return require('packer').startup(function(use)
       {'L3MON4D3/LuaSnip'},
     }
   }
-   use {
+  use {
     'kawre/leetcode.nvim',
     requires = {
       'nvim-telescope/telescope.nvim',
