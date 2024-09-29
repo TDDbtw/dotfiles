@@ -539,7 +539,7 @@ exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
 
 bindsym control+mod1+o exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
 
-################# bar appearance                   
+#################a bar appearance                   
 bar {
     position top
     height 25
