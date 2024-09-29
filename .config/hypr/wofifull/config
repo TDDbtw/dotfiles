@@ -1,0 +1,41 @@
+## Wofi Config
+
+## General
+show=drun
+prompt=Apps
+normal_window=true
+layer=top
+term=kitty
+columns=3  # Increase columns for horizontal layout
+
+## Geometry
+width=100%  # Use full width for horizontal display
+height=40px  # Set a smaller height for the top bar
+location=0
+orientation=horizontal  # Change orientation to horizontal
+halign=fill
+line_wrap=off
+dynamic_lines=false
+
+## Images
+allow_markup=true
+allow_images=true
+image_size=24
+
+## Search
+exec_search=false
+hide_search=false
+parse_search=false
+insensitive=false
+
+## Other
+hide_scroll=true
+no_actions=true
+sort_order=default
+gtk_dark=true
+filter_rate=100
+
+## Keys
+key_expand=Tab
+key_exit=Escape
+

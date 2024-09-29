@@ -6,6 +6,8 @@ fi
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
+
+
 # Theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -29,9 +31,9 @@ eval "$(tmuxifier init -)"
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Google Cloud SDK
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+# # Google Cloud SDK
+# if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+# if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 # Custom Functions
 fzf_open() {
@@ -48,6 +50,7 @@ alias fo='fzf_open'
 alias zshrc='nvim ~/.zshrc'
 alias vimrc='cd .config/nvim && nvim .'
 alias tmuxrc='cd .config/tmux && nvim .'
+alias hrc='cd .config/hypr/hyprland && nvim .'
 alias update='sudo pacman -Syu'  # Assuming you're using Arch-based distro
 alias ls='exa --icons'
 alias ll='exa -alh --git --icons'
@@ -73,7 +76,7 @@ alias dsa="cd ~/Documents/Week-13-Web-Development/git/basic_dsa_sheet/javascript
 # DB aliases
 alias db='sudo systemctl start mongodb'
 alias dbs='sudo systemctl stop mongodb'
-alias wo='cd Projects'
+alias pr='cd Projects'
 # Dotfiles alias
 alias dotfiles='/usr/bin/git --git-dir=/home/dude/.dotfiles/ --work-tree=/home/dude'
 
