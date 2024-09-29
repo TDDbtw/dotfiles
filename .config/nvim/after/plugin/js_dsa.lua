@@ -42,6 +42,9 @@ vim.api.nvim_create_autocmd("FileType", {
     
     -- Snippet for algorithm function
     vim.api.nvim_buf_set_keymap(0, 'n', '<Leader>al', [[:call append(line('.'), ['function algorithm(input) {', '  // Your algorithm implementation here', '}', '', 'module.exports = algorithm;'])<CR>]], {noremap = true, silent = true})
+
+    -- toggle visual interface
+    vim.api.nvim_set_keymap('n', '<Leader>du', [[:lua require'dapui'.toggle()<CR>]], {noremap = true, silent = true})
   end
 })
 
