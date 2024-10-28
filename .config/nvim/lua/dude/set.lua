@@ -10,7 +10,7 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-vim.opt.wrap =false 
+vim.opt.wrap =true 
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -31,5 +31,6 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard:append("unnamedplus")
+-- vim.opt.clipboard = "unnamedplus"
 vim.opt.conceallevel = 2

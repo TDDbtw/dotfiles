@@ -1,217 +1,24 @@
-################# Start of all the settings
 
-set $mod Mod1
+# ~/.config/i3/config
+
+include ~/.config/i3/config.d/general.conf
+include ~/.config/i3/config.d/bindings.conf
+# Include other configuration files
 
 ################# Define the movements keys - variables
 
-set $up k
-set $down j
-set $left h
-set $right l
-set $sm HDMI-A-1-0
-################# Single and Dual screen
-
-# Set up monitors
-exec --no-startup-id xrandr --output eDP --primary --mode 1920x1080 --rate 144.00
-exec --no-startup-id xrandr --output HDMI-A-1-0 --mode 1280x720 --rate 60.00 --left-of eDP
-# Define monitor variables
-set $firstMonitor eDP 
-set $secondMonitor HDMI-A-1-0
+# ~/.config/i3/config
+# Include other configuration file
+################ Start of all the settings
 
 # Assign workspaces to monitors
-workspace 1 output $firstMonitor
-workspace 2 output $firstMonitor
-workspace 3 output $firstMonitor
-workspace 4 output $firstMonitor
-workspace 5 output $firstMonitor
-workspace 6 output $firstMonitor
-workspace 7 output $firstMonitor
-workspace 8 output $firstMonitor
-workspace 9 output $firstMonitor
-workspace 10 output $firstMonitor
-workspace 11 output $secondMonitor
-workspace 12 output $secondMonitor
-workspace 13 output $secondMonitor
 
-# Switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
-
-bindsym Mod4+1 workspace 11
-bindsym Mod4+2 workspace 12
-bindsym Mod4+3 workspace 13
-
-# Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1; workspace 1
-bindsym $mod+Shift+2 move container to workspace 2; workspace 2
-bindsym $mod+Shift+3 move container to workspace 3; workspace 3
-bindsym $mod+Shift+4 move container to workspace 4; workspace 4
-bindsym $mod+Shift+5 move container to workspace 5; workspace 5
-bindsym $mod+Shift+6 move container to workspace 6; workspace 6
-bindsym $mod+Shift+7 move container to workspace 7; workspace 7
-bindsym $mod+Shift+8 move container to workspace 8; workspace 8
-bindsym $mod+Shift+9 move container to workspace 9; workspace 9
-bindsym $mod+Shift+0 move container to workspace 10; workspace 10
-
-bindsym Mod4+Shift+1 move container to workspace 11; workspace 11
-bindsym Mod4+Shift+2 move container to workspace 12; workspace 12
-bindsym Mod4+Shift+3 move container to workspace 13; workspace 13
-
-
-
-
-
-
-################# menu's in arcolinux
-
-
-
-# start dmenu
-bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
-
- # bindsym mod1+ctrl+y exec --no-startup-id mpv --vid=no "https://music.youtube.com/playlist?list=OLAK5uy_khL-3qIv3An2R3B0mBXdO7vgCo3P-GA5c&si=_CE5ic95aWoOtjkR"
-bindsym mod1+ctrl+e exec --no-startup-id mpv --vid=no "https://music.youtube.com/watch?v=1k8PhpifGSo&si=uCh4icYpzxbJoqMd"  
-bindsym mod1+ctrl+y exec --no-startup-id mpv --vid=no "https://music.youtube.com/playlist?list=PLT0ck2cMQg1P82dufXT2mRCHxtvyF7eKA&si=PisftJdmsvXNPRII"  
-bindsym mod1+ctrl+p exec --no-startup-id mpv --vid=no "https://music.youtube.com/playlist?list=OLAK5uy_mfO6NPpRpwLrn7H0bk76IAO7k7JRF1xCc&si=l6r699FuWUs_GdXJ"  
-# bindsym mod1+ctrl+y exec --no-startup-id mpv --vid=no "https://music.youtube.com/playlist?list=OLAK5uy_lD5szk37WYrgQwlKKDQt6FfYgP9T_bgEg&si=4RtrK1T3ZVlzltM0"
-bindsym mod1+ctrl+Shift+y exec --no-startup-id pkill mpv
-bindsym mod1+shift+p exec --no-startup-id echo '{ "command": ["cycle", "pause"] }' | socat - /tmp/mpvsocket
-
-
-# Next track with mod+PgUp
-bindsym mod4+Prior exec --no-startup-id echo '{ "command": ["playlist-next"] }' | socat - /tmp/mpvsocket
-
-# Previous track with mod+PgDown
-bindsym mod4+Next exec --no-startup-id echo '{ "command": ["playlist-prev"] }' | socat - /tmp/mpvsocket
-
-
-# start xfce-appfinder
-bindsym mod1+F3 exec --no-startup-id xfce4-appfinder
-
-# start xlunch app launcher
-# bindsym mod1+F5 exec --no-startup-id xlunch --config ~/.config/xlunch/default.conf --input ~/.config/xlunch/entries.dsv
-
-# start rofi full
-bindsym $mod+F11 exec --no-startup-id "rofi -font 'Noto Sans 13' -theme-str 'window {width: 100%;height: 100%;}' -show drun"
-
-# start rofi small
-bindsym $mod+d exec --no-startup-id rofi -show drun -font "Noto Sans 13"
-
-################# how to exit, logoff, suspend, ...
-
-# Backup exit
-# Press ctrl+Tab+x - check toolbar for next choices
-bindsym control+mod4+X mode "$mode_system"
-bindsym $mod+ctrl+BackSpace firefox
-
-
-# ArcoLinux Logout
-# bindsym $mod+Shift+e exec --no-startup-id archlinux-logout
-#bindsym $mod+X exec --no-startup-id archlinux-logout
-
-################# reload changed configuration     
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# reload the configuration file
-#bindsym $mod+Shift+q reload
-
-################# Stopping an application          
-
-# kill focused window
-bindsym $mod+Shift+c kill
-#bindsym $mod+q kill
-
-################# Moving around in i3              
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# toggle tiling / floating
-#bindsym $mod+Shift+space floating toggle
-
-# change focus
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-################# moving around workspaces         
-
-# next/previous workspace
-
-bindsym Mod1+Tab workspace next
-bindsym Mod1+Shift+Tab workspace prev
-bindsym Ctrl+Tab workspace back_and_forth
-
-# navigate workspaces next / previous
-bindsym Mod1+Ctrl+$right workspace next
-bindsym Mod1+Ctrl+$left workspace prev
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
 ################# Tiling parameters                
 
-# orientation for new workspaces default_orientation 
-default_orientation horizontal 
-# split in horizontal orientation
-bindsym $mod+Ctrl+t split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-# Super + F in arcolinux is execute thunar
-bindsym $mod+f fullscreen toggle
-
-# bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-# bindsym $mod+d focus child
-
-################# resize  
-
-# Resizing by 1
-bindsym $mod+Mod4+Ctrl+Right resize shrink width 1 px or 1 ppt
-bindsym $mod+Mod4+Ctrl+Up resize grow height 1 px or 1 ppt
-bindsym $mod+Mod4+Ctrl+Down resize shrink height 1 px or 1 ppt
-bindsym $mod+Mod4+Ctrl+Left resize grow width 1 px or 1 ppt
-
-# font pango:Noto Mono Regular 13
-# font pango:FiraCode Nerd Font 10
-font pango:DejaVu Sans Mono, FontAwesome 10
-# Autotiling
-exec_always --no-startup-id autotiling
 
 # Browser
 # exec --no-startup-id vivaldi-stable
@@ -220,138 +27,11 @@ for_window [class="Vivaldi-stable"] focus
 # exec --no-startup-id spotify
 for_window [class="Spotify"] focus
 
-# TRAY APPLICATIONS
-# Authentication dialog
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-# Updater
-exec --no-startup-id pamac-tray
-
-# bluetooth
-  exec --no-startup-id blueberry-tray
-
-# network
-exec --no-startup-id nm-applet
-
-# num lock activated
-exec_always --no-startup-id numlockx on
-
-# dropbox
-# exec --no-startup-id dropbox start
-
-# insync
-# exec --no-startup-id insync start
-
-# volume
-# exec --no-startup-id pasystray
-exec --no-startup-id volumeicon
-
-# variety exec --no-startup-id variety
-
-# clipman
-# exec --no-startup-id xfce4-clipman
-
-# Conky
-exec --no-startup-id conky -c ~/.config/i3/system-overview
-
-# feh sets wallpaper
-exec --no-startup-id feh --bg-fill /home/dude/Pictures/1920-x-1080-HD-Wallpapers/"1920 x 1080 HD Wallpapers 266.png" &
-# Polybar
-# exec_always --no-startup-id ~/.config/polybar/launch.sh &
-
-################# system applications       
-
-exec --no-startup-id xfce4-power-manager &
-# exec --no-startup-id xfsettingsd &
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
-
 ################# applications keyboard shortcuts  
-
-# not workspace related
-
-# ArcoLinux Welcome App
-bindsym control+mod1+w exec --no-startup-id arcolinux-welcome-app
-
-# ArchLinux Tweak Tool
-# bindsym control+mod1+e exec --no-startup-id archlinux-tweak-tool
-
-# conky
-bindsym $mod+c exec --no-startup-id conky-toggle
-bindsym $mod+control+c exec --no-startup-id killall conky
-bindsym control+mod1+Next exec --no-startup-id conky-rotate -n
-bindsym control+mod1+Prior exec --no-startup-id conky-rotate -p
-
-# terminal
-bindsym $mod+Return exec --no-startup-id kitty;focus
-bindsym $mod+Shift+Return exec --no-startup-id kitty -e tmux; focus
-bindsym F12 exec --no-startup-id xfce4-terminal --drop-down; focus
-
-# System monitor
-bindsym control+Shift+Escape exec --no-startup-id xfce4-taskmanager;focus
-
-# settings
-bindsym control+mod1+m exec --no-startup-id xfce4-settings-manager
-
-# dolphin
-bindsym control+mod1+d exec --no-startup-id kitty -e yazi; focus
-# bindsym Ctrl+Shift+t exec --no-startup-id kitty -e tmuxifier new-session testy
-# zim
-bindsym Ctrl+Shift+z exec --no-startup-id zim
-#Thunder Bird
-bindsym Ctrl+Shift+t exec --no-startup-id thunderbird
-# postman
-# bindsym l exec --no-startup-id /home/dude/Applications/Postman/Postman
-
-# pavucontrol
-bindsym Ctrl+Shift+u exec --no-startup-id pavucontrol
-
-# document viewer
-bindsym Ctrl+Shift+b exec --no-startup-id evince
-
-#productTool
-bindsym mod4+ctrl+a exec --no-startup-id superProductivity
-
-
-# start xfce-appfinder
-# arcolinux does not seem to work
-bindsym control+mod1+a exec --no-startup-id xfce4-appfinder
-
-# xkill
-bindsym --release $mod+Escape exec xkill
-
-# Function Keybinds
-# Browser
-bindsym $mod+F1 exec --no-startup-id exo-open --launch webbrowser;focus
-# qwerty/azerty conflict with w
-bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;focus
-bindsym control+mod1+f exec --no-startup-id firefox;focus
-
-# Advanced Draw Tool
-bindsym $mod+F4 exec --no-startup-id gimp;focus
-
-# document comparison
-bindsym $mod+F5 exec --no-startup-id meld;focus
-
-bindsym control+mod1+i exec --no-startup-id nitrogen;focus
-
-# virtual machine
-bindsym $mod+F7 exec --no-startup-id virtualbox;focus
-
-# Audio application
-bindsym $mod+F9 exec --no-startup-id lollypop;focus
-
-# music
-bindsym $mod+F10 exec --no-startup-id spotify;focus
-bindsym control+mod1+s exec --no-startup-id spotube;focus
 
 ################# screenshots                      
 
 # bindsym Print exec --no-startup-id scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
-bindsym mod4+f exec --no-startup-id flameshot gui -p ~/Pictures/ss
-bindsym $mod+Shift+f exec --no-startup-id flameshot full -p ~/Pictures/ss
-# bindsym Control+Print exec --no-startup-id xfce4-screenshooter
-# bindsym Control+Shift+Print exec --no-startup-id gnome-screenshot -i
-bindsym $mod+Control+Print exec --no-startup-id flameshot gui
 # bindsym shift+Print exec --no-startup-id shutter
 
 ################# floating or tiled rules         
@@ -379,6 +59,7 @@ for_window [class="^Skype$"] floating enable
 for_window [class="^Spotify$"] floating disable
 for_window [class="System-config-printer.py"] floating enable
 for_window [class="Unetbootin.elf"] floating enable
+for_window [class="xdman"] floating enable
 for_window [class="Usb-creator-gtk"] floating enable
 for_window [class="^Vlc$"] floating disable
 for_window [class="Wine"] floating disable
@@ -421,7 +102,6 @@ for_window [class="Alacritty"] focus
 # bindsym mod4+p exec --no-startup-id variety -p
 # bindsym mod4+Left exec --no-startup-id variety -p
 # favorite wallpaper
-bindsym mod4+w exec --no-startup-id variety -f
 # pause wallpaper
 # bindsym mod4+Up exec --no-startup-id variety --pause
 # resume wallpaper
@@ -440,44 +120,7 @@ bindsym mod4+w exec --no-startup-id variety -f
 
 ################# audio settings                   
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse sset Master '5%+'"
-bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse sset Master '5%-'"
-bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master toggle"
-# https://github.com/acrisci/playerctl/
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioStop exec --no-startup-id playerctl stop
-# Increase brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -d amdgpu_bl2 set +1 
 
-# Decrease brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -d amdgpu_bl2 set 1-
-
-################# bar toggle                       
-
-# bar toggle, hide or show
-bindsym $mod+b bar mode toggle
-
-################# border control                   
-
-# Border control
-hide_edge_borders both
-bindsym $mod+shift+b exec --no-startup-id i3-msg border toggle
-
-# changing border style
-# super+t in arcolinux is starting terminal
-bindsym $mod+t border normal
-bindsym $mod+y border pixel 1
-bindsym $mod+u border none
-
-# new_window pixel 1
-new_window normal
-# new_window none
-
-# new_float pixel 1
-new_float normal
-# new_float none
 
 ################# Popups  control                  
 
@@ -487,18 +130,13 @@ popup_during_fullscreen smart
 ################# i3 gaps next                     
 
 
-for_window [class="^.*"] border pixel 2
-gaps inner 5
-gaps outer 5
-# smart_gaps on
-# smart_borders on
 
 ################# i3 gaps change                   
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
+# bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
@@ -538,7 +176,7 @@ mode "$mode_gaps_outer" {
 exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
 
 bindsym control+mod1+o exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
-
+ 
 #################a bar appearance                   
 bar {
     position top
@@ -594,9 +232,6 @@ bar {
 # NOT USED
 
 # move the currently focused window to the scratchpad
-  bindsym Mod4+ctrl+r move scratchpad
-# Show the first scratchpad window
-bindsym Mod4+r scratchpad show
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 # bindsym Mod1+minus scratchpad show
@@ -614,7 +249,6 @@ bindsym Mod4+r scratchpad show
 
 # The right button toggles floating
 # bindsym button3 floating toggle
-bindsym $mod+space  floating toggle
 # bindsym $mod+button3 floating toggle
 
 # The side buttons move the window around

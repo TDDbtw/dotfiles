@@ -28,7 +28,10 @@ export PATH="$HOME/.config/.tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"
 
 # Powerlevel10k
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
+   
+
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # # Google Cloud SDK
@@ -71,6 +74,8 @@ alias ta='tmux attach -t'
 alias tl='tmux list-sessions'
 alias op='tmuxifier load-session test'
 alias ds='tmuxifier load-session dsa'
+alias d='tmuxifier load-session d3'
+alias ce='tmuxifier load-session ce'
 alias dsa="cd ~/Documents/Week-13-Web-Development/git/basic_dsa_sheet/javascript && vim ."
 # alias ds='code ~/JS_DSA_Learning/prime '
 # DB aliases
