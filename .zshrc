@@ -51,8 +51,11 @@ fzf_open() {
 # Aliases
 alias fo='fzf_open'
 alias zshrc='nvim ~/.zshrc'
+alias cdir='cd "${_%/*}"'
 alias vimrc='cd .config/nvim && nvim .'
 alias tmuxrc='cd .config/tmux && nvim .'
+alias i3rc='cd .config/i3 && nvim .'
+alias picomrc='nvim .config/i3/picom.conf'
 alias hrc='cd .config/hypr/hyprland && nvim .'
 alias update='sudo pacman -Syu'  # Assuming you're using Arch-based distro
 alias ls='exa --icons'
@@ -76,10 +79,16 @@ alias op='tmuxifier load-session test'
 alias ds='tmuxifier load-session dsa'
 alias d='tmuxifier load-session d3'
 alias ce='tmuxifier load-session ce'
+alias tm='tmuxifier load-session tm'
+alias in='tmuxifier load-session intake'
+alias fd='tmuxifier load-session git'
+alias ts='tmuxifier load-session ts'
 alias dsa="cd ~/Documents/Week-13-Web-Development/git/basic_dsa_sheet/javascript && vim ."
+
 # alias ds='code ~/JS_DSA_Learning/prime '
 # DB aliases
 alias db='sudo systemctl start mongodb'
+alias pg='sudo -u postgres psql'
 alias dbs='sudo systemctl stop mongodb'
 alias pr='cd Projects'
 # Dotfiles alias
@@ -97,3 +106,7 @@ fi
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH=~/.npm-global/bin:$PATH
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
