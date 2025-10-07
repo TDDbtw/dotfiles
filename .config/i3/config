@@ -3,135 +3,17 @@
 
 include ~/.config/i3/config.d/general.conf
 include ~/.config/i3/config.d/bindings.conf
+include ~/.config/i3/config.d/window.conf
 # Include other configuration files
 
-################# Define the movements keys - variables
-
-# ~/.config/i3/config
-# Include other configuration file
-################ Start of all the settings
-
-# Assign workspaces to monitors
 
 
-# switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
-
-################# Tiling parameters                
-
-
-# Browser
-# exec --no-startup-id vivaldi-stable
-for_window [class="Vivaldi-stable"] focus
-
-# exec --no-startup-id spotify
-for_window [class="Spotify"] focus
-
-################# applications keyboard shortcuts  
-
-################# screenshots                      
-
-# bindsym Print exec --no-startup-id scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
-# bindsym shift+Print exec --no-startup-id shutter
-
-################# floating or tiled rules         
-
-# floating enabled from some programs - find with xprop
-
-for_window [class="Arcolinux-welcome-app.py"] floating enable
-# for_window [class="Archlinux-tweak-tool.py"] floating enable
-for_window [class="Arcolinux-calamares-tool.py"] floating enable
-for_window [class="Bleachbit"] floating disable
-for_window [class="Blueberry.py"] floating enable
-for_window [class="Brasero"] floating disable
-for_window [class="Galculator"] floating enable
-for_window [class="Gnome-disks"] floating disable
-for_window [class="^Gnome-font-viewer$"] floating enable
-for_window [class="^Gpick$"] floating enable
-for_window [class="Hexchat"] floating disable
-for_window [class="Imagewriter"] floating enable
-for_window [class="Font-manager"] floating enable
-# for_window [class="qt5ct|Lxappearance] floating enable
-for_window [class="Nitrogen"] floating disable
-for_window [class="Pavucontrol"] floating disable
-for_window [class="Peek"] floating enable
-for_window [class="^Skype$"] floating enable
-for_window [class="^Spotify$"] floating disable
-for_window [class="System-config-printer.py"] floating enable
-for_window [class="Unetbootin.elf"] floating enable
-for_window [class="xdman"] floating enable
-for_window [class="Usb-creator-gtk"] floating enable
-for_window [class="^Vlc$"] floating disable
-for_window [class="Wine"] floating disable
-for_window [class="Xfburn"] floating disable
-for_window [class="Xfce4-appfinder"] floating enable
-for_window [class="Xfce4-settings-manager"] floating disable
-for_window [class="Xfce4-taskmanager"] floating enable
-
-# for_window [instance="gimp"] floating disable
-for_window [instance="script-fu"] border normal
-for_window [instance="variety"] floating disable
-
-for_window [title="Copying"] floating enable
-for_window [title="Deleting"] floating enable
-for_window [title="Moving"] floating enable
-for_window [title="^Terminator Preferences$"] floating enable
-
-# for_window [window_role="^gimp-toolbox-color-dialog$"] floating enable
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="^Preferences$"] floating enable
-for_window [window_role="setup"] floating enable
-
-################# give focus to applications       
-
-for_window [class="Gnome-terminal"] focus
-for_window [class="Termite"] focus
-for_window [class="Terminator"] focus
-for_window [class="Urxvt"] focus
-for_window [class="Alacritty"] focus
-
-################# variety for wallpapers      
-
-# Variety keybindings mod4 = Window
-# trash wallpaper
-# bindsym mod4+t exec --no-startup-id variety -t
-# next wallpaper
-# bindsym Ctrl+Shift+right exec --no-startup-id variety -n
-#bindsym mod4+Right exec --no-startup-id variety -n
-# previous wallpaper
-# bindsym mod4+p exec --no-startup-id variety -p
-# bindsym mod4+Left exec --no-startup-id variety -p
-# favorite wallpaper
-# pause wallpaper
-# bindsym mod4+Up exec --no-startup-id variety --pause
-# resume wallpaper
-# bindsym mod4+Down exec --no-startup-id variety --resume
-
-################# variety with pywal for your wallpapers/colour schemes
-
-# next wallpaper
-# bindsym mod4+Shift+n exec --no-startup-id variety -n && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
-# previous wallpaper
-# bindsym mod4+Shift+p exec --no-startup-id variety -p && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
-# trash wallpaper
-# bindsym mod4+Shift+t exec --no-startup-id variety -t && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
-# Update Wallpaper
-# bindsym mod4+Shift+u exec --no-startup-id wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)
-
-################# audio settings                   
-
-
 
 ################# Popups  control                  
 
 # Popups during fullscreen mode
 popup_during_fullscreen smart
-
-################# i3 gaps next                     
-
-
-
-################# i3 gaps change                   
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -139,35 +21,35 @@ set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 # bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+  bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
+  bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     gaps inner current set 0
 
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     gaps inner all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
+  bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     gaps outer current set 0
 
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     gaps outer all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 ################# picom of i3wm                  
@@ -176,96 +58,55 @@ mode "$mode_gaps_outer" {
 exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
 
 bindsym control+mod1+o exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
- 
-#################a bar appearance                   
+
+
 bar {
-    position top
+  position top
     height 25
     workspace_buttons yes
-    font pango:DejaVu Sans Mono, FontAwesome 10
+    font pango:JetBrains Mono Nerd Font 10
     status_command i3status -c ~/.config/i3/i3status.conf
-
     colors {
+        # background #1a1b2690
         background #00000000
-        statusline #ffffff
-        separator  #666666
+        statusline #c0caf5
+        separator  #565f89
 
-        focused_workspace  #4c7899 #285577 #ffffff
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #333333 #222222 #888888
-        urgent_workspace   #2f343a #900000 #ffffff
+# Tokyo Night colors for workspaces
+        focused_workspace  #7aa2f7 #7aa2f7 #ffffff
+        active_workspace   #292e42 #292e42 #c0caf5
+        inactive_workspace #24283b #24283b #565f89
+        urgent_workspace   #f7768e #f7768e #ffffff
     }
-
-    separator_symbol "  "  # This adds space between status items
+  separator_symbol "  "
     tray_padding 2
     tray_output primary
-
-    # For i3 version 4.20+, use:
-    # status_padding 2
-    # For older versions, use:
+# For i3 version 4.20+
+# status_padding 2
+# For older versions
     i3bar_command i3bar --transparency
 }
 
-    hide_edge_borders smart
-    smart_gaps on
-    ##STOP THEMING BAR
 
-    ##START THEMING WM
-    #Theme name : ArcoLinux Default
 
-    # Window color settings
-    # class                 bo5a7d75a7d7crder  backgr. text    indicator
-    client.focused          #5a7d7c #5a7d7c #e5e5e5 #6790EB
-    client.unfocused        #222222 #222222 #aaaaaa #222222
-    client.focused_inactive #222222 #222222 #a9a9a9 #222222
-    client.placeholder      #222222 #222222 #aaaaaa #222222
-    client.urgent           #d42121 #d42121 #f7f7f7 #d42121
+hide_edge_borders smart
+smart_gaps on
 
-    client.background       #242424
+client.focused          #7aa2f7 #7aa2f7 #ffffff #7aa2f7   #7aa2f7
 
-    ##STOP THEMING WM
+# Inactive windows - Deep background blue
+client.unfocused        #24283b #24283b #565f89 #24283b   #24283b
 
+# Inactive windows (when floating)
+client.focused_inactive #292e42 #292e42 #565f89 #292e42   #292e42
+
+# Placeholder for new windows
+client.placeholder      #1a1b26 #1a1b26 #565f89 #1a1b26   #1a1b26
+
+# Urgent windows - Soft red accent
+client.urgent          #f7768e #f7768e #ffffff #f7768e   #f7768e
+
+# Background color - Darkest base
+client.background       #1a1b26
 ######################################## THE END 
 
-################# Scratchpad
-
-# NOT USED
-
-# move the currently focused window to the scratchpad
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-# bindsym Mod1+minus scratchpad show
-
-################# mouse settings in i3             
-
-# NOT USED
-
-# mouse settings
-# The middle button over a titlebar kills the window
-# bindsym --release button2 kill
-
-# The middle button and a modifer over any part of the window kills the window
-# bindsym --whole-window $mod+button2 kill
-
-# The right button toggles floating
-# bindsym button3 floating toggle
-# bindsym $mod+button3 floating toggle
-
-# The side buttons move the window around
-# bindsym button9 move left
-# bindsym button8 move right
-
-################# keyboard control                 
-
-# NOT USED
-
-# Settings of arcolinux will be applied
-# exec --no-startup-id setxkbmap be
-# exec --no-startup-id setxkbmap us
-
-################# unclutter                        
-
-# NOT USED
-
-# get the mouse out of the way with unclutter
-# exec --no-startup-id unclutter
